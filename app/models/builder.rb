@@ -19,4 +19,5 @@ class Builder < ApplicationRecord
 
   has_many :guitars
   has_many :comments
+  has_one_attached :images
 end
