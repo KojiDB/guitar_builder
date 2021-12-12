@@ -1,24 +1,67 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Usersテーブル
 
-Things you may want to cover:
+| Column             | Type    | Options     |
+| ------------------ | ------- | ----------- |
+| name               | string  | null: false |
+| email              | string  | null: false |
+| encrypted_password | string  | null: false |
+| address            | string  | null: false |
+| post_number        | integer | null: false |
+| phone_number       | integer |             |
 
-* Ruby version
+### Association
 
-* System dependencies
+-- has_many :comments
 
-* Configuration
+## Buildersテーブル
 
-* Database creation
+| Column             | Type    | Options     |
+| ------------------ | ------- | ----------- |
+| brand_name         | string  | null: false |
+| builder_email      | string  | null: false |
+| encrypted_password | string  | null: false |
+| area               | string  | null: false |
+| city               | string  | null: false |
+| introduction       | text    | null: false |
+| price_zone         | string  | null: false |
+| phone              | integer | null: false |
+| private_order_id   | integer | null :false |
 
-* Database initialization
+### Association
 
-* How to run the test suite
+-- has_many :guitars
+-- has_many :comments
 
-* Services (job queues, cache servers, search engines, etc.)
+## Guitarsテーブル
 
-* Deployment instructions
+| Column            | Type       | Options                        |
+| ----------------- | ---------- | ------------------------------ |
+| guitar_name       | string     | null: false                    |
+| guitar_type_id    | integer    | null: false                    |
+| strings_number_id | integer    | null: false                    |
+| price             | integer    | null: false                    |
+| features          | text       | null: false                    |
+| builder           | references | null: false, foreign_key: true |
+| url               | text       |                                |
 
-* ...
+### Association
+
+-- belongs_to :builder
+-- has_many :comments
+
+## Commentsテーブル
+
+| Column  | Type       | Options                                      |
+| ------- | ---------- | -------------------------------------------- |
+| user    | references | null: false,unless:builder,foreign_key: true |
+| builder | references | null: false,unless:user,foreign_key: true    |
+| guitar  | references | null: false,foreign_key: true                |
+| comment | text       | null: false                                  |
+
+### Association
+
+-- belongs_to :user
+-- belongs_to :builder
+-- belongs_to :guitar
