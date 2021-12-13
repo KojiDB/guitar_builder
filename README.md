@@ -21,7 +21,7 @@
 | ------------------ | ------- | ----------- |
 | brand_name         | string  | null: false |
 | builder_email      | string  | null: false |
-| encrypted_password | string  | null: false |
+| builder_password   | string  | null: false |
 | area               | string  | null: false |
 | city               | string  | null: false |
 | introduction       | text    | null: false |
