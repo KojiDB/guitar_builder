@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_12_123942) do
+ActiveRecord::Schema.define(version: 2021_12_12_130450) do
 
   create_table "builders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "brand_name", null: false
@@ -29,6 +29,18 @@ ActiveRecord::Schema.define(version: 2021_12_12_123942) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["builder_email"], name: "index_builders_on_builder_email", unique: true
     t.index ["reset_password_token"], name: "index_builders_on_reset_password_token", unique: true
+  end
+
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "builder_id", null: false
+    t.bigint "guitar_id", null: false
+    t.text "comment", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["builder_id"], name: "index_comments_on_builder_id"
+    t.index ["guitar_id"], name: "index_comments_on_guitar_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "guitars", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -60,5 +72,8 @@ ActiveRecord::Schema.define(version: 2021_12_12_123942) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "builders"
+  add_foreign_key "comments", "guitars"
+  add_foreign_key "comments", "users"
   add_foreign_key "guitars", "builders"
 end
