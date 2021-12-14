@@ -1,3 +1,20 @@
+# アプリケーション名
+## guitar Builder
+# アプリケーション概要
+生産者と消費者をつなげるためのコミュニケーションツール。
+# URL
+
+# テスト用アカウント
+
+# 利用方法
+
+# アプリケーションを作成した背景
+
+# 洗い出した要件
+
+# 実装した機能についての画像やGIFおよびその説明
+
+# 実装予定の機能
 # テーブル設計
 
 ## Usersテーブル
@@ -21,7 +38,7 @@
 | ------------------ | ------- | ----------- |
 | brand_name         | string  | null: false |
 | builder_email      | string  | null: false |
-| encrypted_password | string  | null: false |
+| builder_password   | string  | null: false |
 | area               | string  | null: false |
 | city               | string  | null: false |
 | introduction       | text    | null: false |
@@ -65,3 +82,9 @@
 -- belongs_to :user
 -- belongs_to :builder
 -- belongs_to :guitar
+
+# 画面遷移図
+
+# 開発環境
+
+# ローカルでの動作方法

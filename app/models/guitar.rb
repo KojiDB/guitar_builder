@@ -1,4 +1,6 @@
 class Guitar < ApplicationRecord
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  
   with_options presence: true do
     validates :guitar_name
     validates :guitar_type_id, numericality: { other_than: 1 }
