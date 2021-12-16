@@ -9,5 +9,5 @@ Rails.application.routes.draw do
     password:        'users/passwords',
     registrations:   'users/registrations'
   }
-  
+  root to: "builders#index"
 end
