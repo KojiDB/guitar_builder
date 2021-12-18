@@ -5,10 +5,10 @@
   <ul class='builder-log'>
   <% if builder_signed_in? %>
     <li><%= link_to current_builder.builder_name, "#", class: "builder-name" %></li>
-    <li><%= link_to '製作者ログアウト', destroy_builder_session_path, method: :delete, class: "logout" %></li>
+    <li><%= link_to '製作者ログアウト', destroy_builder_session_path, method: :delete, class: "logout2" %></li>
   <% else %>
-    <li><%= link_to '製作者ログイン', new_builder_session_path, class: "login" %></li>
-    <li><%= link_to '製作者新規登録', new_builder_registration_path, class: "sign-up" %></li>
+    <li><%= link_to '製作者ログイン', new_builder_session_path, class: "login2" %></li>
+    <li><%= link_to '製作者新規登録', new_builder_registration_path, class: "sign-up2" %></li>
   <% end %>
   </ul>
 </div>
