@@ -10,4 +10,6 @@ Rails.application.routes.draw do
     registrations:   'users/registrations'
   }
   root to: "builders#index"
+
+  resources :builders
 end
