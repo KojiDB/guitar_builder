@@ -5,6 +5,24 @@ class BuildersController < ApplicationController
     @builder = Builder.all
   end
 
+  def new
+    @builder = Builder.new
+  end
+
+  def create
+    @builder = Builder.new(builder_params)
+    if @builder.valid?
+      @builder.save
+      redirect_to root_path
+    else
+      render :new
+    end
+  end
+
+  def show
+    @builder = Builder.find(params[:id])
+  end
+
   def edit
   end
 
@@ -24,6 +42,6 @@ class BuildersController < ApplicationController
   private
 
   def builder_params
-    params.require(:builder).permit(:brand_name, :builder_email, :builder_password, :area, :city, :introduction, :price_zone, :phone, :private_order_id)
+    params.require(:builder).permit(:brand_name, :builder_email, :builder_password, :area, :city, :introduce, :price_zone, :phone, :private_order_id)
   end
 end
